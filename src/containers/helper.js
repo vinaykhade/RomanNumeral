@@ -1,4 +1,4 @@
-import { DECIMALS, ROMANS } from './constants';
+import { DECIMALS, ROMANS, VALID_ROMAN_NUMERALS } from './constants';
 
 const RomanNumerals = (function() {
 
@@ -16,7 +16,7 @@ const RomanNumerals = (function() {
 
 	const fromRoman = (str) =>  {  
 		let result = 0;
-		// the result is now a number, not a string
+		
 		for (let i = 0;i<=DECIMALS.length;i++) {
 		    while (str.indexOf(ROMANS[i]) === 0){
 		      result += DECIMALS[i];
@@ -28,11 +28,10 @@ const RomanNumerals = (function() {
 
 	const checkIfRomanNumeral = (numeral) => {
 	    numeral = numeral.toUpperCase();
-	    const validRomanNumerals = ["M", "D", "C", "L", "X", "V", "I", "(", ")"];
 	    let valid = true;
 
 	    for (let letter of numeral) {
-	      if (!validRomanNumerals.includes(letter)) {
+	      if (!VALID_ROMAN_NUMERALS.includes(letter)) {
 	        valid = false;
 	      }
 	    }
